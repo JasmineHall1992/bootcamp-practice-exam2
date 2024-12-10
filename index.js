@@ -92,15 +92,20 @@ const collection = [
 ];
 
 // PROBLEM #1 //
+//create a function that takes in two parameters
+const setDigitalCode = function(array, value){
+    //iterate through the array backwards, access every other movie
+ for(let i = array.length - 1; i >= 0; i -= 2){
+    array[i].digitalCode = value;
 
-const setDigitalCode = function(){
-   
+ }
+   return array;
 };
 
 // PROBLEM #2 //
-
-const filterByGenreTag = function(){
-    
+//use filter to only return certain movie abjects
+const filterByGenreTag = function(array, tag) {
+    return array.filter(movie => movie.genreTags.toLowerCase() === tag.toLowerCase()); 
 };
 
 
