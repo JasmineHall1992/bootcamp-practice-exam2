@@ -214,7 +214,7 @@ const createNonSenseString = function(array, index){
     //return values;
 //};
 
-//OR THIS WAS DONE IN CLASS
+//OR THIS WAS DONE IN CLASS yea
 
 const getValues = function(object,props){
     const output = [];
