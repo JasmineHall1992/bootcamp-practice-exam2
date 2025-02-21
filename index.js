@@ -147,32 +147,55 @@ const getTopSpecialFeature = function(array, title){
 
 // PROBLEM #5 //
 
-const mapTitles = function(array) {
-    const mapped = array.map(movie => `${movie.title}(${movie.year}) - dir.${movie.director}`);
-    return mapped;
-};
+//I: function takes in an array of movie objects
+//O: function returns a new array of strings
+//C: must use map
+
+const mapTitles = function(array){
+    //use map to return a new array of strings of a movie's title year and director
+    return array.map(function(movie){
+        return `${movie.title} (${movie.year}) - dir. ${movie.director}`;
+    });
+}
+//OR
+//** const mapTitles = function(array) {
+    //const mapped = array.map(movie => `${movie.title}(${movie.year}) - dir.${movie.director}`);
+    //return mapped;
+//};
     
 
 
 
 
 // PROBLEM #6 //
+//I: function takes in an array of movie objects
+//O: return a new array of subarrays containing the titles of each movie's special features
 
 const mapSpecialFeatures = function(array){
-    const mapped = array.map(title => title.specialFeatures || []);
-    return mapped;
-};
+    //use map to return an array of subarrays;
+    return array.map(function(movie){
+        const holderArray = [];
+        for (let i = 0; i < movie.specialFeatures.length; i++){
+            holderArray.push(movie.specialFeatures[i].title);
+
+        }
+        return holderArray;
+    });
+}
 
 // PROBLEM #7 //
 
-const createNonsenseString = function(array, index) {
-    const result = array.reduce((acc, movie) => {
-        // Check if the index is within bounds of the title
-        const char = movie.title[index] || '';
-        return acc + char;
-    }, '');
-    return result;
+//I: takes in an array of movie objects and a number representing an index
+//O: function returns a new string by adding each movie's title
+//C: use reduce
+
+const createNonSenseString = function(array, index){
+    return array.reduce(function(acc, current){
+        acc += current.title.charAt(index);
+        return acc;
+    }, "");
 };
+
 
 // PROBLEM #8 //
 
