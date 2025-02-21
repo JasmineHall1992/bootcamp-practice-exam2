@@ -92,55 +92,85 @@ const collection = [
 ];
 
 // PROBLEM #1 //
+//create a function that takes in two parameters
+const setDigitalCode = function(array, value){
+    //iterate through the array backwards, access every other movie
+ for(let i = array.length - 1; i >= 0; i -= 2){
+    array[i].digitalCode = value;
 
-const setDigitalCode = function(){
-   
+ }
+   return array;
 };
 
 // PROBLEM #2 //
-
-const filterByGenreTag = function(){
-    
+//use filter to only return certain movie abjects
+const filterByGenreTag = function(array, tag) {
+    return array.filter(movie => movie.genreTags.toLowerCase() === tag.toLowerCase()); 
 };
 
+//or 
 
+//const filterByGenreTag = function(array,tag) {
+    //return array.filter(funtion(movie){
+       // return movie.genreTags.includes(tag);
+   // });
+// };
 
 // PROBLEM #3 //
 
-const filterBySpecialFeatureType = function(){
-    
+const filterBySpecialFeatureType = function(array, type){
+    return array.filter(movie => movie.type === type);
 };
 
 
 // PROBLEM #4 //
 
 const getTopSpecialFeature = function(array, title){
-    
+    //base case, if no movie is found with that title
+    if (array.length === 0){
+        return "no movie found matching that title";
+    }
+    //recursion
+    if (array.title === title)
+        return `${array[0].title} : ${array.specialFeatures}`;
+    //return function
+    return getTopSpecialFeature(slice(1), title);
 };
 
 
 // PROBLEM #5 //
 
-const mapTitles = function(){
-    
+const mapTitles = function(array) {
+    const mapped = array.map(movie => `${movie.title}(${movie.year}) - dir.${movie.director}`);
+    return mapped;
 };
+    
+
 
 
 
 // PROBLEM #6 //
 
-const mapSpecialFeatures = function(){
-    
+const mapSpecialFeatures = function(array){
+    const mapped = array.map(title => title.specialFeatures || []);
+    return mapped;
 };
 
 // PROBLEM #7 //
 
-const createNonsenseString = function(){
-    
+const createNonsenseString = function(array, index) {
+    const result = array.reduce((acc, movie) => {
+        // Check if the index is within bounds of the title
+        const char = movie.title[index] || '';
+        return acc + char;
+    }, '');
+    return result;
 };
 
 // PROBLEM #8 //
 
-const getValues = function(){
-    
+const getValues = function(object, props) {
+    const values = props.map(key => object[key]);
+    return values;
 };
+
