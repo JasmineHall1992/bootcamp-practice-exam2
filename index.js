@@ -198,9 +198,30 @@ const createNonSenseString = function(array, index){
 
 
 // PROBLEM #8 //
+//I: takes in object and an array of keys
+//O: returns a new array of values that exist in all those keys
 
-const getValues = function(object, props) {
-    const values = props.map(key => object[key]);
-    return values;
-};
+//const getValues = function(object,props) {
+   // return props.map(function(key){
+        //return object[key];
+    //});
+//};
 
+//OR
+
+//const getValues = function(object, props) {
+    //const values = props.map(key => object[key]);
+    //return values;
+//};
+
+//OR THIS WAS DONE IN CLASS
+
+const getValues = function(object,props){
+    const output = [];
+    //iterate throguth the array of props
+    for (let i = 0; i < props.length; i++){
+        //access the current key on the object to push value into output array
+        output.push(object[props[i]]);
+    }
+    return output;
+}
