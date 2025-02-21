@@ -108,7 +108,7 @@ const filterByGenreTag = function(array, tag) {
     return array.filter(movie => movie.genreTags.toLowerCase() === tag.toLowerCase()); 
 };
 
-//or 
+//or DO THAT ONE
 
 //const filterByGenreTag = function(array,tag) {
     //return array.filter(funtion(movie){
@@ -118,8 +118,15 @@ const filterByGenreTag = function(array, tag) {
 
 // PROBLEM #3 //
 
-const filterBySpecialFeatureType = function(array, type){
-    return array.filter(movie => movie.type === type);
+const filterBySpecialFeatureType = function(array, type) {
+    return array.filter(function(movie) {
+        for (let i = 0; i < movie.specialFeatures.length; i++) {
+            if (movie.specialFeatures[i] === type) { // Assuming `specialFeatures` is an array of strings
+                return true;
+            }
+        }
+        return false;
+    });
 };
 
 
@@ -131,10 +138,10 @@ const getTopSpecialFeature = function(array, title){
         return "no movie found matching that title";
     }
     //recursion
-    if (array.title === title)
-        return `${array[0].title} : ${array.specialFeatures}`;
-    //return function
-    return getTopSpecialFeature(slice(1), title);
+    if (array[0].title === title)
+        return `${array[0].title} : ${array[0].specialFeatures[0].title}`;
+    //return function, start a slice at the 1 index so you can do it again
+    return getTopSpecialFeature(array.slice(1), title);
 };
 
 
